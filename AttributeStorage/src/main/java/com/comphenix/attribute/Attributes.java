@@ -103,7 +103,7 @@ public class Attributes {
     public static class Attribute {
         private NbtCompound data;
 
-        private Attribute(Builder builder) {
+        public Attribute(Builder builder) {
             data = NbtFactory.createCompound();
             setAmount(builder.amount);
             setOperation(builder.operation);
@@ -180,7 +180,16 @@ public class Attributes {
             private Builder() {
                 // Don't make this accessible
             }
-            
+
+            public Builder(double amount, Operation operation,
+                    AttributeType type, String name, UUID uuid) {
+                this.amount = amount;
+                this.operation = operation;
+                this.type = type;
+                this.name = name;
+                this.uuid = uuid;
+            }
+
             public Builder amount(double amount) {
                 this.amount = amount;
                 return this;
